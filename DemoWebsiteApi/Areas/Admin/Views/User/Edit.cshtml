@@ -1,0 +1,79 @@
+﻿@using DemoWebsiteApi.Utility
+@model RoleManagementVM
+
+<div class="container">
+    <h1>Update User</h1>
+
+    <form asp-action="Edit" method="post">
+        <input asp-for="ApplicationUser.Id" hidden />
+
+        <div class="row">
+            <div class="col-md-6">
+                <!-- Email -->
+                <div class="form-floating mb-3">
+                    <input asp-for="ApplicationUser.Email" class="form-control" autocomplete="username" placeholder="name@example.com" />
+                    <label asp-for="ApplicationUser.Email">Email</label>
+                    <span asp-validation-for="ApplicationUser.Email" class="text-danger"></span>
+                </div>
+
+                <!-- Name -->
+                <div class="form-floating mb-3">
+                    <input asp-for="ApplicationUser.Name" class="form-control" aria-required="true" placeholder="Name" />
+                    <label asp-for="ApplicationUser.Name">Name</label>
+                    <span asp-validation-for="ApplicationUser.Name" class="text-danger"></span>
+                </div>
+
+                <!-- Phone Number -->
+                <div class="form-floating mb-3">
+                    <input asp-for="ApplicationUser.PhoneNumber" class="form-control" aria-required="true" placeholder="Phone Number" />
+                    <label asp-for="ApplicationUser.PhoneNumber">Phone Number</label>
+                    <span asp-validation-for="ApplicationUser.PhoneNumber" class="text-danger"></span>
+                </div>
+
+                <!-- Address -->
+                <div class="form-floating mb-3">
+                    <input asp-for="ApplicationUser.Address" class="form-control" aria-required="true" placeholder="Address" />
+                    <label asp-for="ApplicationUser.Address">Address</label>
+                    <span asp-validation-for="ApplicationUser.Address" class="text-danger"></span>
+                </div>
+
+                <!-- City -->
+                <div class="form-floating mb-3">
+                    <input asp-for="ApplicationUser.City" class="form-control" aria-required="true" placeholder="City" />
+                    <label asp-for="ApplicationUser.City">City</label>
+                    <span asp-validation-for="ApplicationUser.City" class="text-danger"></span>
+                </div>
+
+                <!-- State -->
+                <div class="form-floating mb-3">
+                    <input asp-for="ApplicationUser.State" class="form-control" aria-required="true" placeholder="State" />
+                    <label asp-for="ApplicationUser.State">State</label>
+                    <span asp-validation-for="ApplicationUser.State" class="text-danger"></span>
+                </div>
+
+                <!-- Pickup Address -->
+                <div class="form-floating mb-3">
+                    <input asp-for="ApplicationUser.PickupAddress" class="form-control" aria-required="true" placeholder="Pickup Address" />
+                    <label asp-for="ApplicationUser.PickupAddress">Pickup Address</label>
+                    <span asp-validation-for="ApplicationUser.PickupAddress" class="text-danger"></span>
+                </div>
+
+                <!-- Role -->
+                <div class="form-floating mb-3">
+                    <select asp-for="ApplicationUser.Role" asp-items="@Model.RoleList" class="form-select">
+                    </select>
+                    <label asp-for="ApplicationUser.Role">Role</label>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary mt-3">Update</button>
+            </div>
+        </div>
+
+        <a class="btn btn-secondary mt-3" asp-controller="User" asp-action="Index">Back to List</a>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

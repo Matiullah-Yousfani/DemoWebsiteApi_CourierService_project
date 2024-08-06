@@ -1,0 +1,72 @@
+﻿@model ShipmentVM
+
+<div class="container">
+    <h3 class="form-heading">
+        @(Model.Shipment.ShipmentId == 0 ? "Create Shipment" : "Update Shipment")
+    </h3>
+
+    <form asp-action="Upsert">
+        <input asp-for="Shipment.ShipmentId" hidden />
+
+        <div class="row">
+            <div class="col-md-7">
+                <div class="form-group">
+                    <label asp-for="Shipment.ConsigneeName" class="form-label">Consignee Name</label>
+                    <input type="text" class="form-control" asp-for="Shipment.ConsigneeName" placeholder="Enter Consignee Name" />
+                    <span asp-validation-for="Shipment.ConsigneeName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Shipment.PhoneNumber" class="form-label">Phone Number</label>
+                    <input type="text" class="form-control" asp-for="Shipment.PhoneNumber" placeholder="Enter Phone Number" />
+                    <span asp-validation-for="Shipment.PhoneNumber" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Shipment.Address" class="form-label">Address</label>
+                    <textarea class="form-control" asp-for="Shipment.Address" placeholder="Enter Address"></textarea>
+                    <span asp-validation-for="Shipment.Address" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Shipment.City" class="form-label">City</label>
+                    <input type="text" class="form-control" asp-for="Shipment.City" placeholder="Enter City" />
+                    <span asp-validation-for="Shipment.City" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Shipment.CODAmount" class="form-label">COD Amount</label>
+                    <input type="number" class="form-control" asp-for="Shipment.CODAmount" placeholder="Enter COD Amount" />
+                    <span asp-validation-for="Shipment.CODAmount" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Shipment.Netweight" class="form-label">Net Weight</label>
+                    <input type="text" class="form-control" asp-for="Shipment.Netweight" placeholder="Enter Net Weight" />
+                    <span asp-validation-for="Shipment.Netweight" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Shipment.SpecialInstructions" class="form-label">Special Instructions</label>
+                    <textarea class="form-control" asp-for="Shipment.SpecialInstructions" placeholder="Enter Special Instructions"></textarea>
+                    <span asp-validation-for="Shipment.SpecialInstructions" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Shipment.ApplicationUserId" class="form-label">Sender</label>
+                    <select asp-for="Shipment.ApplicationUserId" class="form-control" asp-items="Model.UserList">
+                        <option disabled selected>-- Select Sender --</option>
+                    </select>
+                    <span asp-validation-for="Shipment.ApplicationUserId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-outline-primary btn-submit" type="submit">
+                        @(Model.Shipment.ShipmentId == 0 ? "Create" : "Update")
+                    </button>
+                    <a class="btn btn-back" asp-controller="Shipment" asp-action="Index">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
